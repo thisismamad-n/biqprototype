@@ -13,6 +13,7 @@ import {
 import HealthDot from "./HealthDot";
 import ProgressIndicator from "./ProgressIndicator";
 import type { SectionType } from "./PetalDiagram";
+import { motion } from "framer-motion";
 
 interface SectionHealth {
   id: SectionType;
@@ -45,69 +46,83 @@ const getHealthStatus = (progress: number): "healthy" | "needs-work" | "incomple
 
 export default function BusinessHealthMeter({ sections, overallProgress }: BusinessHealthMeterProps) {
   return (
-    <Card className="p-6 shadow-lg bg-background/60 backdrop-blur-sm border-border/50" data-testid="business-health-meter">
-      <div className="space-y-6">
+    <Card className="p-8 shadow-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-2 border-white/50 overflow-hidden relative" data-testid="business-health-meter">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-full blur-3xl"></div>
+      <div className="relative z-10 space-y-8">
         <div>
-          <h2 className="text-lg font-semibold mb-1">سلامت کسب‌وکار</h2>
+          <h2 className="text-2xl font-bold mb-2 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            سلامت کسب‌وکار
+          </h2>
           <p className="text-sm text-muted-foreground">
             پیشرفت خود را در تمام بخش‌ها دنبال کنید
           </p>
         </div>
 
-        <div className="flex flex-col items-center gap-4 py-6 px-4 bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl">
-          <ProgressIndicator progress={overallProgress} size={140} strokeWidth={10} showPercentage />
+        <div className="flex flex-col items-center gap-6 py-8 px-6 bg-gradient-to-br from-emerald-500/5 via-teal-500/5 to-cyan-500/5 rounded-2xl border border-emerald-500/10 shadow-inner">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-full blur-2xl"></div>
+            <ProgressIndicator progress={overallProgress} size={160} strokeWidth={12} showPercentage />
+          </div>
           <div className="text-center">
-            <div className="text-3xl font-bold">٪{overallProgress}</div>
-            <div className="text-xs text-muted-foreground font-medium">تکمیل کلی</div>
+            <div className="text-4xl font-black bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
+              ٪{overallProgress}
+            </div>
+            <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wide">تکمیل کلی</div>
           </div>
         </div>
 
-        <div className="space-y-2">
-          {sections.map((section) => {
+        <div className="space-y-3">
+          {sections.map((section, index) => {
             const Icon = SECTION_ICONS[section.id];
             const status = getHealthStatus(section.progress);
 
             return (
-              <div
+              <motion.div
                 key={section.id}
-                className="flex items-center justify-between p-3 rounded-xl hover-elevate active-elevate-2 cursor-pointer border border-transparent hover:border-border/50 transition-all"
-                data-testid={`health-section-${section.id}`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
               >
-                <div className="flex items-center gap-3 flex-1 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 text-foreground" />
+                <div
+                  className="flex items-center justify-between p-4 rounded-xl hover-elevate active-elevate-2 cursor-pointer border-2 border-transparent hover:border-primary/20 transition-all bg-gradient-to-r from-white/50 to-white/30 dark:from-gray-800/50 dark:to-gray-800/30 backdrop-blur-sm group"
+                  data-testid={`health-section-${section.id}`}
+                >
+                  <div className="flex items-center gap-4 flex-1 min-w-0">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-md">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <span className="text-base font-bold truncate">{section.label}</span>
                   </div>
-                  <span className="text-sm font-medium truncate">{section.label}</span>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <HealthDot status={status} size="md" showPulse={status === "incomplete"} />
-                  <div className="text-sm font-semibold w-12 text-left tabular-nums">
-                    ٪{section.progress}
+                  
+                  <div className="flex items-center gap-4">
+                    <HealthDot status={status} size="md" showPulse={status === "incomplete"} />
+                    <div className="text-base font-black w-16 text-left tabular-nums bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                      ٪{section.progress}
+                    </div>
+                    <ProgressIndicator progress={section.progress} size={48} strokeWidth={4} />
                   </div>
-                  <ProgressIndicator progress={section.progress} size={36} strokeWidth={3} />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        <div className="pt-4 border-t space-y-3">
-          <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+        <div className="pt-6 border-t-2 border-dashed border-border space-y-4">
+          <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
             راهنمای وضعیت
           </div>
-          <div className="flex flex-wrap gap-6 text-xs">
+          <div className="flex flex-wrap gap-6 text-sm">
             <div className="flex items-center gap-2">
               <HealthDot status="healthy" size="sm" />
-              <span className="text-muted-foreground font-medium">تکمیل شده</span>
+              <span className="font-semibold">تکمیل شده</span>
             </div>
             <div className="flex items-center gap-2">
               <HealthDot status="needs-work" size="sm" />
-              <span className="text-muted-foreground font-medium">در حال انجام</span>
+              <span className="font-semibold">در حال انجام</span>
             </div>
             <div className="flex items-center gap-2">
               <HealthDot status="incomplete" size="sm" />
-              <span className="text-muted-foreground font-medium">شروع نشده</span>
+              <span className="font-semibold">شروع نشده</span>
             </div>
           </div>
         </div>

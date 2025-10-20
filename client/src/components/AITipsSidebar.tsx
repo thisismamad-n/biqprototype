@@ -23,15 +23,21 @@ const ICON_MAP = {
 
 export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarProps) {
   return (
-    <Card className="p-6 h-full overflow-y-auto shadow-lg bg-background/60 backdrop-blur-sm border-border/50" data-testid="ai-tips-sidebar">
-      <div className="space-y-6">
+    <Card className="p-6 h-full min-h-[500px] overflow-y-auto shadow-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-2 border-white/50 relative" data-testid="ai-tips-sidebar">
+      <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl"></div>
+      <div className="relative z-10 space-y-6">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-primary" />
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl blur-md opacity-75 animate-pulse"></div>
+            <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg">
+              <Sparkles className="w-6 h-6 text-white" />
+            </div>
           </div>
           <div>
-            <h2 className="text-lg font-semibold">بینش‌های هوشمند</h2>
-            <p className="text-xs text-muted-foreground">پیشنهادات شخصی‌سازی شده</p>
+            <h2 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              بینش‌های هوشمند
+            </h2>
+            <p className="text-xs text-muted-foreground font-medium">پیشنهادات شخصی‌سازی شده</p>
           </div>
         </div>
 
@@ -43,26 +49,28 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="space-y-3"
+              className="space-y-4"
             >
               {tips.map((tip, index) => {
                 const Icon = ICON_MAP[tip.icon];
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="p-4 hover-elevate border-border/50 bg-background/40">
-                      <div className="flex gap-3">
+                    <Card className="p-5 hover-elevate border-2 border-transparent hover:border-primary/20 bg-gradient-to-br from-white/60 to-white/40 dark:from-gray-800/60 dark:to-gray-800/40 backdrop-blur-sm shadow-lg group">
+                      <div className="flex gap-4">
                         <div className="flex-shrink-0">
-                          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
-                            <Icon className="w-4 h-4 text-primary" />
+                          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform shadow-md">
+                            <Icon className="w-5 h-5 text-primary" />
                           </div>
                         </div>
-                        <div className="space-y-1.5">
-                          <h3 className="text-sm font-semibold leading-tight">{tip.title}</h3>
+                        <div className="space-y-2">
+                          <h3 className="text-sm font-bold leading-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                            {tip.title}
+                          </h3>
                           <p className="text-xs text-muted-foreground leading-relaxed">
                             {tip.description}
                           </p>
@@ -79,12 +87,15 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-center py-16"
+              className="text-center py-20"
             >
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-muted/50 to-muted/20 mx-auto mb-4 flex items-center justify-center">
-                <Lightbulb className="w-10 h-10 text-muted-foreground/50" />
+              <div className="relative w-28 h-28 mx-auto mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-muted/30 to-muted/10 rounded-3xl blur-xl"></div>
+                <div className="relative w-28 h-28 rounded-3xl bg-gradient-to-br from-muted/50 to-muted/20 flex items-center justify-center border-2 border-white/50">
+                  <Lightbulb className="w-14 h-14 text-muted-foreground/40" />
+                </div>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto font-medium">
                 برای مشاهده بینش‌ها و پیشنهادات هوش مصنوعی، یک بخش از نمودار را انتخاب کنید
               </p>
             </motion.div>
