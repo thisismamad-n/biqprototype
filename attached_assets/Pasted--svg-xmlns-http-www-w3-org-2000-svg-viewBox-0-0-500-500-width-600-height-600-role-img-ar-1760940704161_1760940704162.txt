@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="600" height="600" role="img" aria-label="Business ecosystem diagram with four sections">
+  <style>
+    .sector {
+      cursor: pointer;
+      stroke: #333;
+      stroke-width: 2;
+      transition: transform .15s, filter .15s;
+    }
+    .sector:hover {
+      transform: scale(1.04);
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    }
+    .center {
+      cursor: pointer;
+      stroke: #333;
+      stroke-width: 2;
+      transition: transform .15s, filter .15s;
+    }
+    .center:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    }
+    text {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      fill: #1a1a1a;
+      pointer-events: none;
+    }
+  </style>
+
+  <!-- Four sectors around the center -->
+  <!-- Top Right - HR -->
+  <path id="hr" class="sector" fill="#d6eaff"
+    d="M250,100
+       A150,150 0 0 1 400,250
+       L300,250
+       A50,50 0 0 0 250,200Z"
+    onclick="alert('HR clicked')" aria-label="HR"/>
+  <text x="330" y="160" text-anchor="middle">HR</text>
+
+  <!-- Bottom Right - Finance -->
+  <path id="finance" class="sector" fill="#fff3cd"
+    d="M400,250
+       A150,150 0 0 1 250,400
+       L250,300
+       A50,50 0 0 0 300,250Z"
+    onclick="alert('Finance clicked')" aria-label="Finance"/>
+  <text x="330" y="340" text-anchor="middle">Finance</text>
+
+  <!-- Bottom Left - Sales -->
+  <path id="sales" class="sector" fill="#d4edda"
+    d="M250,400
+       A150,150 0 0 1 100,250
+       L200,250
+       A50,50 0 0 0 250,300Z"
+    onclick="alert('Sales clicked')" aria-label="Sales"/>
+  <text x="170" y="340" text-anchor="middle">Sales</text>
+
+  <!-- Top Left - Marketing -->
+  <path id="marketing" class="sector" fill="#f8d7da"
+    d="M100,250
+       A150,150 0 0 1 250,100
+       L250,200
+       A50,50 0 0 0 200,250Z"
+    onclick="alert('Marketing clicked')" aria-label="Marketing"/>
+  <text x="170" y="160" text-anchor="middle">Marketing</text>
+
+  <!-- Center Circle -->
+  <circle id="business" class="center" cx="250" cy="250" r="50" fill="#ffffff"
+    onclick="alert('Business center clicked')" aria-label="Business Center"/>
+  <text x="250" y="255" text-anchor="middle" font-size="18">Business</text>
+</svg>
