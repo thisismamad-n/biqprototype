@@ -4,7 +4,8 @@ import SectionDetailModal from "@/components/SectionDetailModal";
 import BusinessHealthMeter from "@/components/BusinessHealthMeter";
 import AITipsSidebar from "@/components/AITipsSidebar";
 import type { SubsectionData } from "@/components/SubsectionCard";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // todo: remove mock functionality
 const SUBSECTIONS_DATA: Record<SectionType, SubsectionData[]> = {
@@ -121,6 +122,7 @@ export default function Home() {
   const [selectedSection, setSelectedSection] = useState<SectionType | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [subsectionsState, setSubsectionsState] = useState(SUBSECTIONS_DATA);
+  const [showDetails, setShowDetails] = useState(false);
 
   const sections: SectionData[] = useMemo(() => {
     const sectionTypes: SectionType[] = [
@@ -198,62 +200,77 @@ export default function Home() {
     legal: "حقوقی"
   };
 
+  const scrollToDetails = () => {
+    setShowDetails(true);
+    setTimeout(() => {
+      document.getElementById('details-section')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <header className="border-b bg-background/80 backdrop-blur-md sticky top-0 z-30 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-md">
-                <Sparkles className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                  طرح جامع رشد کسب‌وکار
-                </h1>
-                <p className="text-sm text-muted-foreground">
-                  برنامه کسب‌وکار کامل خود را بسازید و تجسم کنید
-                </p>
-              </div>
+      {/* Hero Section - Full Viewport */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-6 py-12 relative">
+        <div className="absolute top-6 left-6 z-20">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-md">
+              <Sparkles className="w-6 h-6 text-primary-foreground" />
             </div>
-            <div className="text-left">
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
-                پیشرفت کلی
-              </div>
-              <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                ٪{overallProgress}
-              </div>
+            <div>
+              <h1 className="text-lg font-bold">طرح جامع رشد کسب‌وکار</h1>
+              <p className="text-xs text-muted-foreground">برنامه کسب‌وکار کامل خود را بسازید</p>
             </div>
           </div>
         </div>
-      </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-7 xl:col-span-8">
-            <div className="bg-background/60 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-border/50">
-              <div className="mb-6 text-center">
-                <h2 className="text-xl font-semibold mb-2">اکوسیستم کسب‌وکار شما</h2>
-                <p className="text-sm text-muted-foreground">
-                  برای شروع ساخت طرح خود، هر بخشی را کلیک کنید
-                </p>
-              </div>
-              <div className="w-full min-h-[600px] flex items-center justify-center">
-                <div className="w-full max-w-2xl aspect-square">
-                  <PetalDiagram sections={sections} onSectionClick={handleSectionClick} />
-                </div>
-              </div>
-            </div>
+        <div className="absolute top-6 right-6 z-20 text-right">
+          <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
+            پیشرفت کلی
           </div>
+          <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+            ٪{overallProgress}
+          </div>
+        </div>
 
-          <div className="lg:col-span-5 xl:col-span-4 space-y-6">
-            <BusinessHealthMeter sections={sections} overallProgress={overallProgress} />
-            <div className="min-h-[400px]">
+        <div className="text-center mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+            اکوسیستم کسب‌وکار شما
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            برای شروع ساخت طرح خود، هر بخشی را کلیک کنید
+          </p>
+        </div>
+
+        <div className="w-full max-w-5xl aspect-square">
+          <PetalDiagram sections={sections} onSectionClick={handleSectionClick} />
+        </div>
+
+        <Button
+          variant="ghost"
+          size="lg"
+          onClick={scrollToDetails}
+          className="mt-8 gap-2 animate-bounce"
+          data-testid="button-scroll-details"
+        >
+          <span>مشاهده جزئیات</span>
+          <ChevronDown className="w-5 h-5" />
+        </Button>
+      </section>
+
+      {/* Details Section */}
+      <section id="details-section" className="min-h-screen bg-background/60 backdrop-blur-sm border-t">
+        <div className="max-w-7xl mx-auto px-6 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-7 xl:col-span-8">
+              <BusinessHealthMeter sections={sections} overallProgress={overallProgress} />
+            </div>
+
+            <div className="lg:col-span-5 xl:col-span-4">
               <AITipsSidebar selectedSection={selectedSection} tips={currentTips} />
             </div>
           </div>
         </div>
-      </main>
+      </section>
 
       <SectionDetailModal
         isOpen={isModalOpen}

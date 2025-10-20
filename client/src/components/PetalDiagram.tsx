@@ -37,7 +37,7 @@ const SECTION_COLORS: Record<SectionType, { base: string; light: string; fg: str
 export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramProps) {
   const center = { cx: 250, cy: 250 };
   const outerRadius = 150;
-  const innerRadius = 55;
+  const innerRadius = 60;
   
   const angleStep = (2 * Math.PI) / sections.length;
   const startAngle = -Math.PI / 2;
@@ -68,7 +68,7 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
 
   const getLabelPosition = (index: number) => {
     const angle = startAngle + (index + 0.5) * angleStep;
-    const labelRadius = (outerRadius + innerRadius) / 1.45;
+    const labelRadius = (outerRadius + innerRadius) / 1.6;
     return {
       x: center.cx + labelRadius * Math.cos(angle),
       y: center.cy + labelRadius * Math.sin(angle),
@@ -78,24 +78,24 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
   return (
     <svg 
       viewBox="0 0 500 500" 
-      className="w-full h-full drop-shadow-lg"
+      className="w-full h-full drop-shadow-2xl"
       role="img" 
       aria-label="نمودار اکوسیستم کسب‌وکار"
     >
       <defs>
         <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
           <feMerge>
             <feMergeNode in="coloredBlur"/>
             <feMergeNode in="SourceGraphic"/>
           </feMerge>
         </filter>
         
-        <filter id="petal-shadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-          <feOffset dx="0" dy="2" result="offsetblur"/>
+        <filter id="petal-shadow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+          <feOffset dx="0" dy="3" result="offsetblur"/>
           <feComponentTransfer>
-            <feFuncA type="linear" slope="0.2"/>
+            <feFuncA type="linear" slope="0.25"/>
           </feComponentTransfer>
           <feMerge>
             <feMergeNode/>
@@ -105,6 +105,8 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
 
         {sections.map((section) => {
           const colors = SECTION_COLORS[section.id];
+          const progressDecimal = section.progress / 100;
+          
           return (
             <linearGradient 
               key={`gradient-${section.id}`}
@@ -114,8 +116,19 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
               x2="100%" 
               y2="100%"
             >
-              <stop offset="0%" stopColor={colors.base} stopOpacity="0.95" />
-              <stop offset="100%" stopColor={colors.light} stopOpacity="0.9" />
+              {section.progress > 0 ? (
+                <>
+                  <stop offset="0%" stopColor={colors.base} stopOpacity="0.95" />
+                  <stop offset={`${progressDecimal * 100}%`} stopColor={colors.light} stopOpacity="0.9" />
+                  <stop offset={`${progressDecimal * 100}%`} stopColor="#E5E7EB" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#F3F4F6" stopOpacity="0.4" />
+                </>
+              ) : (
+                <>
+                  <stop offset="0%" stopColor="#E5E7EB" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#F3F4F6" stopOpacity="0.4" />
+                </>
+              )}
             </linearGradient>
           );
         })}
@@ -123,25 +136,24 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
 
       {sections.map((section, index) => {
         const colors = SECTION_COLORS[section.id];
-        const isActive = section.progress > 0;
         const labelPos = getLabelPosition(index);
+        const hasProgress = section.progress > 0;
 
         return (
           <g key={section.id}>
             <motion.path
               d={createPetalPath(index)}
-              fill={isActive ? `url(#gradient-${section.id})` : "#E5E7EB"}
-              stroke={isActive ? colors.base : "#D1D5DB"}
-              strokeWidth="1.5"
-              opacity={isActive ? 1 : 0.5}
+              fill={`url(#gradient-${section.id})`}
+              stroke={hasProgress ? colors.base : "#D1D5DB"}
+              strokeWidth="2"
               style={{ cursor: "pointer" }}
               filter="url(#petal-shadow)"
               initial={false}
               whileHover={{ 
-                scale: 1.08,
-                opacity: 1,
+                scale: 1.06,
+                filter: "url(#soft-glow)",
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.96 }}
               transition={{ 
                 type: "spring",
                 stiffness: 400,
@@ -156,35 +168,35 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
               y={labelPos.y}
               textAnchor="middle"
               dominantBaseline="middle"
-              fill={isActive ? colors.fg : "#9CA3AF"}
-              fontSize="16"
-              fontWeight="600"
+              fill={hasProgress ? colors.fg : "#6B7280"}
+              fontSize="18"
+              fontWeight="700"
               pointerEvents="none"
               style={{ userSelect: "none" }}
             >
               {section.label}
             </text>
 
-            {isActive && section.progress === 100 && (
+            {hasProgress && section.progress === 100 && (
               <motion.g
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.2 }}
               >
                 <circle
-                  cx={labelPos.x + 30}
-                  cy={labelPos.y - 15}
-                  r="10"
+                  cx={labelPos.x + 35}
+                  cy={labelPos.y - 18}
+                  r="12"
                   fill="#10B981"
                   filter="url(#soft-glow)"
                 />
                 <text
-                  x={labelPos.x + 30}
-                  y={labelPos.y - 15}
+                  x={labelPos.x + 35}
+                  y={labelPos.y - 18}
                   textAnchor="middle"
                   dominantBaseline="middle"
                   fill="white"
-                  fontSize="12"
+                  fontSize="14"
                   fontWeight="700"
                   pointerEvents="none"
                 >
@@ -202,10 +214,10 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
         r={innerRadius}
         fill="white"
         stroke="#E5E7EB"
-        strokeWidth="2"
+        strokeWidth="3"
         style={{ cursor: "pointer" }}
         filter="url(#petal-shadow)"
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
         data-testid="center-business"
@@ -217,8 +229,8 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
         textAnchor="middle"
         dominantBaseline="middle"
         fill="#1F2937"
-        fontSize="22"
-        fontWeight="700"
+        fontSize="26"
+        fontWeight="800"
         pointerEvents="none"
         style={{ userSelect: "none" }}
       >
