@@ -57,7 +57,7 @@ export default function SubsectionCard({ subsection, onUpdate, multiline = false
           {multiline ? (
             <Textarea
               id={subsection.id}
-              placeholder={`Describe your ${subsection.label.toLowerCase()}...`}
+              placeholder={`${subsection.label} خود را توضیح دهید...`}
               value={value}
               onChange={(e) => handleChange(e.target.value)}
               className="min-h-24 resize-none"
@@ -66,7 +66,7 @@ export default function SubsectionCard({ subsection, onUpdate, multiline = false
           ) : (
             <Input
               id={subsection.id}
-              placeholder={`Enter ${subsection.label.toLowerCase()}...`}
+              placeholder={`${subsection.label} را وارد کنید...`}
               value={value}
               onChange={(e) => handleChange(e.target.value)}
               data-testid={`input-${subsection.id}`}

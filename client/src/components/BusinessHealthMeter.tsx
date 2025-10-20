@@ -48,17 +48,17 @@ export default function BusinessHealthMeter({ sections, overallProgress }: Busin
     <Card className="p-6 shadow-lg bg-background/60 backdrop-blur-sm border-border/50" data-testid="business-health-meter">
       <div className="space-y-6">
         <div>
-          <h2 className="text-lg font-semibold mb-1">Business Health</h2>
+          <h2 className="text-lg font-semibold mb-1">سلامت کسب‌وکار</h2>
           <p className="text-sm text-muted-foreground">
-            Track your progress across all departments
+            پیشرفت خود را در تمام بخش‌ها دنبال کنید
           </p>
         </div>
 
         <div className="flex flex-col items-center gap-4 py-6 px-4 bg-gradient-to-br from-muted/30 to-muted/10 rounded-xl">
           <ProgressIndicator progress={overallProgress} size={140} strokeWidth={10} showPercentage />
           <div className="text-center">
-            <div className="text-3xl font-bold">{overallProgress}%</div>
-            <div className="text-xs text-muted-foreground font-medium">Overall Completion</div>
+            <div className="text-3xl font-bold">٪{overallProgress}</div>
+            <div className="text-xs text-muted-foreground font-medium">تکمیل کلی</div>
           </div>
         </div>
 
@@ -82,8 +82,8 @@ export default function BusinessHealthMeter({ sections, overallProgress }: Busin
                 
                 <div className="flex items-center gap-3">
                   <HealthDot status={status} size="md" showPulse={status === "incomplete"} />
-                  <div className="text-sm font-semibold w-12 text-right tabular-nums">
-                    {section.progress}%
+                  <div className="text-sm font-semibold w-12 text-left tabular-nums">
+                    ٪{section.progress}
                   </div>
                   <ProgressIndicator progress={section.progress} size={36} strokeWidth={3} />
                 </div>
@@ -94,20 +94,20 @@ export default function BusinessHealthMeter({ sections, overallProgress }: Busin
 
         <div className="pt-4 border-t space-y-3">
           <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-            Status Legend
+            راهنمای وضعیت
           </div>
           <div className="flex flex-wrap gap-6 text-xs">
             <div className="flex items-center gap-2">
               <HealthDot status="healthy" size="sm" />
-              <span className="text-muted-foreground font-medium">Complete</span>
+              <span className="text-muted-foreground font-medium">تکمیل شده</span>
             </div>
             <div className="flex items-center gap-2">
               <HealthDot status="needs-work" size="sm" />
-              <span className="text-muted-foreground font-medium">In Progress</span>
+              <span className="text-muted-foreground font-medium">در حال انجام</span>
             </div>
             <div className="flex items-center gap-2">
               <HealthDot status="incomplete" size="sm" />
-              <span className="text-muted-foreground font-medium">Not Started</span>
+              <span className="text-muted-foreground font-medium">شروع نشده</span>
             </div>
           </div>
         </div>

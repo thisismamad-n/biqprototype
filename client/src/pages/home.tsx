@@ -9,111 +9,111 @@ import { Sparkles } from "lucide-react";
 // todo: remove mock functionality
 const SUBSECTIONS_DATA: Record<SectionType, SubsectionData[]> = {
   strategy: [
-    { id: "mission", label: "Mission Statement", description: "Define your company's core purpose and values", progress: 0, value: "" },
-    { id: "vision", label: "Vision", description: "Where do you see your company in 5 years?", progress: 0, value: "" },
-    { id: "values", label: "Core Values", description: "What principles guide your business decisions?", progress: 0, value: "" },
-    { id: "goals", label: "Strategic Goals", description: "Set your primary business objectives", progress: 0, value: "" },
-    { id: "swot", label: "SWOT Analysis", description: "Identify strengths, weaknesses, opportunities, and threats", progress: 0, value: "" },
-    { id: "competitive", label: "Competitive Advantage", description: "What makes you unique in the market?", progress: 0, value: "" },
+    { id: "mission", label: "بیانیه مأموریت", description: "هدف اصلی و ارزش‌های شرکت خود را تعریف کنید", progress: 0, value: "" },
+    { id: "vision", label: "چشم‌انداز", description: "شرکت خود را در ۵ سال آینده کجا می‌بینید؟", progress: 0, value: "" },
+    { id: "values", label: "ارزش‌های اصلی", description: "چه اصولی تصمیمات کسب‌وکار شما را هدایت می‌کنند؟", progress: 0, value: "" },
+    { id: "goals", label: "اهداف استراتژیک", description: "اهداف اصلی کسب‌وکار خود را تعیین کنید", progress: 0, value: "" },
+    { id: "swot", label: "تحلیل SWOT", description: "نقاط قوت، ضعف، فرصت‌ها و تهدیدات را شناسایی کنید", progress: 0, value: "" },
+    { id: "competitive", label: "مزیت رقابتی", description: "چه چیزی شما را در بازار منحصر به فرد می‌کند؟", progress: 0, value: "" },
   ],
   operations: [
-    { id: "processes", label: "Core Processes", description: "Document your key operational workflows", progress: 0, value: "" },
-    { id: "suppliers", label: "Suppliers", description: "List your main suppliers and partners", progress: 0, value: "" },
-    { id: "quality", label: "Quality Standards", description: "Define your quality control measures", progress: 0, value: "" },
-    { id: "inventory", label: "Inventory Management", description: "How do you manage stock and resources?", progress: 0, value: "" },
+    { id: "processes", label: "فرآیندهای اصلی", description: "گردش کارهای عملیاتی کلیدی خود را مستند کنید", progress: 0, value: "" },
+    { id: "suppliers", label: "تأمین‌کنندگان", description: "تأمین‌کنندگان و شرکای اصلی خود را فهرست کنید", progress: 0, value: "" },
+    { id: "quality", label: "استانداردهای کیفیت", description: "اقدامات کنترل کیفیت خود را تعریف کنید", progress: 0, value: "" },
+    { id: "inventory", label: "مدیریت موجودی", description: "چگونه موجودی و منابع را مدیریت می‌کنید؟", progress: 0, value: "" },
   ],
   hr: [
-    { id: "team", label: "Team Structure", description: "Outline your organizational hierarchy", progress: 0, value: "" },
-    { id: "hiring", label: "Hiring Process", description: "Define your recruitment strategy", progress: 0, value: "" },
-    { id: "culture", label: "Company Culture", description: "Describe your workplace values and environment", progress: 0, value: "" },
-    { id: "benefits", label: "Benefits Package", description: "What benefits do you offer employees?", progress: 0, value: "" },
-    { id: "training", label: "Training Programs", description: "How do you develop your team's skills?", progress: 0, value: "" },
+    { id: "team", label: "ساختار تیم", description: "سلسله مراتب سازمانی خود را ترسیم کنید", progress: 0, value: "" },
+    { id: "hiring", label: "فرآیند استخدام", description: "استراتژی استخدام خود را تعریف کنید", progress: 0, value: "" },
+    { id: "culture", label: "فرهنگ سازمانی", description: "ارزش‌ها و محیط کاری خود را شرح دهید", progress: 0, value: "" },
+    { id: "benefits", label: "بسته مزایا", description: "چه مزایایی به کارکنان ارائه می‌دهید؟", progress: 0, value: "" },
+    { id: "training", label: "برنامه‌های آموزشی", description: "چگونه مهارت‌های تیم خود را توسعه می‌دهید؟", progress: 0, value: "" },
   ],
   branding: [
-    { id: "logo", label: "Logo & Identity", description: "Define your visual brand elements", progress: 0, value: "" },
-    { id: "voice", label: "Brand Voice", description: "How does your brand communicate?", progress: 0, value: "" },
-    { id: "positioning", label: "Brand Positioning", description: "How do you want to be perceived?", progress: 0, value: "" },
-    { id: "guidelines", label: "Brand Guidelines", description: "Document your brand standards", progress: 0, value: "" },
+    { id: "logo", label: "لوگو و هویت", description: "عناصر بصری برند خود را تعریف کنید", progress: 0, value: "" },
+    { id: "voice", label: "لحن برند", description: "برند شما چگونه ارتباط برقرار می‌کند؟", progress: 0, value: "" },
+    { id: "positioning", label: "جایگاه‌یابی برند", description: "چگونه می‌خواهید درک شوید؟", progress: 0, value: "" },
+    { id: "guidelines", label: "راهنمای برند", description: "استانداردهای برند خود را مستند کنید", progress: 0, value: "" },
   ],
   finance: [
-    { id: "budget", label: "Budget Plan", description: "Outline your financial allocation", progress: 0, value: "" },
-    { id: "pricing", label: "Pricing Strategy", description: "How do you price your products/services?", progress: 0, value: "" },
-    { id: "revenue", label: "Revenue Streams", description: "Identify your income sources", progress: 0, value: "" },
-    { id: "expenses", label: "Fixed Expenses", description: "List your recurring costs", progress: 0, value: "" },
-    { id: "projections", label: "Financial Projections", description: "Forecast your 12-month financials", progress: 0, value: "" },
+    { id: "budget", label: "برنامه بودجه", description: "تخصیص مالی خود را مشخص کنید", progress: 0, value: "" },
+    { id: "pricing", label: "استراتژی قیمت‌گذاری", description: "محصولات/خدمات خود را چگونه قیمت‌گذاری می‌کنید؟", progress: 0, value: "" },
+    { id: "revenue", label: "جریان‌های درآمد", description: "منابع درآمد خود را شناسایی کنید", progress: 0, value: "" },
+    { id: "expenses", label: "هزینه‌های ثابت", description: "هزینه‌های تکرارشونده خود را فهرست کنید", progress: 0, value: "" },
+    { id: "projections", label: "پیش‌بینی‌های مالی", description: "مالی ۱۲ ماهه خود را پیش‌بینی کنید", progress: 0, value: "" },
   ],
   product: [
-    { id: "roadmap", label: "Product Roadmap", description: "Plan your product development timeline", progress: 0, value: "" },
-    { id: "features", label: "Key Features", description: "What are your core product features?", progress: 0, value: "" },
-    { id: "market", label: "Target Market", description: "Who is your ideal customer?", progress: 0, value: "" },
-    { id: "feedback", label: "User Feedback", description: "How do you gather customer insights?", progress: 0, value: "" },
+    { id: "roadmap", label: "نقشه راه محصول", description: "جدول زمانی توسعه محصول را برنامه‌ریزی کنید", progress: 0, value: "" },
+    { id: "features", label: "ویژگی‌های کلیدی", description: "ویژگی‌های اصلی محصول شما چیست؟", progress: 0, value: "" },
+    { id: "market", label: "بازار هدف", description: "مشتری ایده‌آل شما کیست؟", progress: 0, value: "" },
+    { id: "feedback", label: "بازخورد کاربران", description: "چگونه بینش مشتری جمع‌آوری می‌کنید؟", progress: 0, value: "" },
   ],
   sales: [
-    { id: "funnel", label: "Sales Funnel", description: "Map your customer journey", progress: 0, value: "" },
-    { id: "channels", label: "Sales Channels", description: "Where do you sell your products?", progress: 0, value: "" },
-    { id: "targets", label: "Sales Targets", description: "Set your revenue goals", progress: 0, value: "" },
-    { id: "crm", label: "CRM System", description: "How do you manage customer relationships?", progress: 0, value: "" },
+    { id: "funnel", label: "قیف فروش", description: "سفر مشتری را ترسیم کنید", progress: 0, value: "" },
+    { id: "channels", label: "کانال‌های فروش", description: "محصولات خود را کجا می‌فروشید؟", progress: 0, value: "" },
+    { id: "targets", label: "اهداف فروش", description: "اهداف درآمدی خود را تعیین کنید", progress: 0, value: "" },
+    { id: "crm", label: "سیستم CRM", description: "روابط با مشتریان را چگونه مدیریت می‌کنید؟", progress: 0, value: "" },
   ],
   technology: [
-    { id: "infrastructure", label: "Tech Infrastructure", description: "What systems and tools do you use?", progress: 0, value: "" },
-    { id: "security", label: "Security Measures", description: "How do you protect your data?", progress: 0, value: "" },
-    { id: "website", label: "Website & Apps", description: "Describe your digital presence", progress: 0, value: "" },
-    { id: "automation", label: "Automation Tools", description: "What processes are automated?", progress: 0, value: "" },
+    { id: "infrastructure", label: "زیرساخت فناوری", description: "از چه سیستم‌ها و ابزارهایی استفاده می‌کنید؟", progress: 0, value: "" },
+    { id: "security", label: "اقدامات امنیتی", description: "چگونه از داده‌های خود محافظت می‌کنید؟", progress: 0, value: "" },
+    { id: "website", label: "وب‌سایت و اپلیکیشن‌ها", description: "حضور دیجیتال خود را شرح دهید", progress: 0, value: "" },
+    { id: "automation", label: "ابزارهای اتوماسیون", description: "چه فرآیندهایی خودکار شده‌اند؟", progress: 0, value: "" },
   ],
   legal: [
-    { id: "structure", label: "Business Structure", description: "LLC, Corporation, Sole Proprietorship, etc.", progress: 0, value: "" },
-    { id: "licenses", label: "Licenses & Permits", description: "What licenses do you need?", progress: 0, value: "" },
-    { id: "contracts", label: "Key Contracts", description: "Document important agreements", progress: 0, value: "" },
-    { id: "compliance", label: "Compliance", description: "What regulations must you follow?", progress: 0, value: "" },
+    { id: "structure", label: "ساختار کسب‌وکار", description: "شرکت با مسئولیت محدود، سهامی و غیره", progress: 0, value: "" },
+    { id: "licenses", label: "مجوزها و پروانه‌ها", description: "به چه مجوزهایی نیاز دارید؟", progress: 0, value: "" },
+    { id: "contracts", label: "قراردادهای کلیدی", description: "توافقات مهم را مستند کنید", progress: 0, value: "" },
+    { id: "compliance", label: "انطباق", description: "باید از چه مقرراتی پیروی کنید؟", progress: 0, value: "" },
   ],
 };
 
 // todo: remove mock functionality
 const AI_TIPS: Record<SectionType, Array<{ icon: "sparkles" | "lightbulb" | "trending" | "alert"; title: string; description: string }>> = {
   strategy: [
-    { icon: "sparkles", title: "Define Your Vision", description: "Start with a clear mission statement that defines your purpose and long-term goals. This will guide all strategic decisions." },
-    { icon: "lightbulb", title: "Competitive Analysis", description: "Research your top 3-5 competitors to identify market gaps and differentiation opportunities." },
-    { icon: "trending", title: "Set SMART Goals", description: "Establish Specific, Measurable, Achievable, Relevant, and Time-bound objectives for the next 12 months." },
+    { icon: "sparkles", title: "چشم‌انداز خود را تعریف کنید", description: "با یک بیانیه مأموریت واضح که هدف و اهداف بلندمدت شما را تعریف می‌کند، شروع کنید. این همه تصمیمات استراتژیک را هدایت خواهد کرد." },
+    { icon: "lightbulb", title: "تحلیل رقابتی", description: "۳ تا ۵ رقیب اصلی خود را تحقیق کنید تا شکاف‌های بازار و فرصت‌های تمایز را شناسایی کنید." },
+    { icon: "trending", title: "اهداف SMART تعیین کنید", description: "اهداف خاص، قابل اندازه‌گیری، قابل دستیابی، مرتبط و زمان‌دار را برای ۱۲ ماه آینده تعیین کنید." },
   ],
   operations: [
-    { icon: "sparkles", title: "Document Everything", description: "Create standard operating procedures (SOPs) for all key processes to ensure consistency and scalability." },
-    { icon: "alert", title: "Identify Bottlenecks", description: "Map your workflows to find inefficiencies and areas where processes slow down." },
-    { icon: "trending", title: "Automate Repetitive Tasks", description: "Look for opportunities to use software tools to reduce manual work and errors." },
+    { icon: "sparkles", title: "همه چیز را مستند کنید", description: "رویه‌های عملیاتی استاندارد (SOP) را برای تمام فرآیندهای کلیدی ایجاد کنید تا از ثبات و مقیاس‌پذیری اطمینان حاصل شود." },
+    { icon: "alert", title: "گلوگاه‌ها را شناسایی کنید", description: "گردش کارهای خود را ترسیم کنید تا ناکارآمدی‌ها و مناطقی که فرآیندها کند می‌شوند را پیدا کنید." },
+    { icon: "trending", title: "کارهای تکراری را خودکار کنید", description: "به دنبال فرصت‌هایی برای استفاده از ابزارهای نرم‌افزاری باشید تا کار دستی و خطاها را کاهش دهید." },
   ],
   hr: [
-    { icon: "lightbulb", title: "Build a Strong Culture", description: "Define your values early and hire people who align with them. Culture fit is as important as skills." },
-    { icon: "sparkles", title: "Invest in Development", description: "Regular training and growth opportunities improve retention and build a stronger team." },
-    { icon: "trending", title: "Clear Communication", description: "Establish regular check-ins and transparent feedback channels to keep everyone aligned." },
+    { icon: "lightbulb", title: "فرهنگ قوی بسازید", description: "ارزش‌های خود را زود تعریف کنید و افرادی را استخدام کنید که با آن‌ها همسو هستند. تناسب فرهنگی به اندازه مهارت‌ها مهم است." },
+    { icon: "sparkles", title: "در توسعه سرمایه‌گذاری کنید", description: "آموزش منظم و فرصت‌های رشد، حفظ را بهبود می‌بخشد و تیم قوی‌تری می‌سازد." },
+    { icon: "trending", title: "ارتباط شفاف", description: "بررسی‌های منظم و کانال‌های بازخورد شفاف برقرار کنید تا همه همسو باشند." },
   ],
   branding: [
-    { icon: "sparkles", title: "Consistency is Key", description: "Use the same colors, fonts, and voice across all platforms to build brand recognition." },
-    { icon: "lightbulb", title: "Tell Your Story", description: "Share your origin story and values to create emotional connections with customers." },
-    { icon: "trending", title: "Stand Out", description: "Identify what makes you different and amplify it in all your branding materials." },
+    { icon: "sparkles", title: "ثبات کلید است", description: "از رنگ‌ها، فونت‌ها و لحن یکسان در تمام پلتفرم‌ها استفاده کنید تا شناخت برند را ایجاد کنید." },
+    { icon: "lightbulb", title: "داستان خود را بگویید", description: "داستان منشأ و ارزش‌های خود را به اشتراک بگذارید تا ارتباطات احساسی با مشتریان ایجاد کنید." },
+    { icon: "trending", title: "متمایز باشید", description: "آنچه را که شما را متفاوت می‌کند شناسایی کنید و آن را در تمام مواد برندینگ تقویت کنید." },
   ],
   finance: [
-    { icon: "alert", title: "Track Cash Flow", description: "Monitor your cash flow weekly to avoid surprises and ensure you can cover expenses." },
-    { icon: "sparkles", title: "Diversify Revenue", description: "Multiple income streams provide stability and reduce risk if one channel underperforms." },
-    { icon: "trending", title: "Plan for Growth", description: "Set aside budget for marketing and development to fuel sustainable expansion." },
+    { icon: "alert", title: "جریان نقدی را پیگیری کنید", description: "جریان نقدی خود را هفتگی نظارت کنید تا از غافلگیری‌ها جلوگیری کنید و اطمینان حاصل کنید که می‌توانید هزینه‌ها را پوشش دهید." },
+    { icon: "sparkles", title: "درآمد را متنوع کنید", description: "جریان‌های درآمدی متعدد ثبات فراهم می‌کنند و ریسک را کاهش می‌دهند اگر یک کانال کمتر عمل کند." },
+    { icon: "trending", title: "برای رشد برنامه‌ریزی کنید", description: "بودجه را برای بازاریابی و توسعه کنار بگذارید تا گسترش پایدار را تغذیه کنید." },
   ],
   product: [
-    { icon: "lightbulb", title: "Start with MVP", description: "Launch a minimum viable product to test your assumptions and gather real user feedback." },
-    { icon: "sparkles", title: "Listen to Users", description: "Regular user interviews and feedback sessions help you build what people actually want." },
-    { icon: "trending", title: "Iterate Quickly", description: "Use short development cycles to test ideas, learn fast, and adapt to market needs." },
+    { icon: "lightbulb", title: "با MVP شروع کنید", description: "یک محصول حداقلی قابل استفاده را راه‌اندازی کنید تا فرضیات خود را آزمایش کنید و بازخورد واقعی کاربر جمع‌آوری کنید." },
+    { icon: "sparkles", title: "به کاربران گوش دهید", description: "مصاحبه‌های منظم کاربر و جلسات بازخورد به شما کمک می‌کنند آنچه مردم واقعاً می‌خواهند بسازید." },
+    { icon: "trending", title: "سریع تکرار کنید", description: "از چرخه‌های توسعه کوتاه استفاده کنید تا ایده‌ها را آزمایش کنید، سریع یاد بگیرید و با نیازهای بازار سازگار شوید." },
   ],
   sales: [
-    { icon: "sparkles", title: "Know Your Customer", description: "Create detailed buyer personas to understand their pain points and buying motivations." },
-    { icon: "trending", title: "Optimize Your Funnel", description: "Track metrics at each stage to identify where prospects drop off and improve conversion." },
-    { icon: "lightbulb", title: "Build Relationships", description: "Focus on solving problems and adding value, not just closing deals." },
+    { icon: "sparkles", title: "مشتری خود را بشناسید", description: "پرسونای خریدار دقیق ایجاد کنید تا نقاط درد و انگیزه‌های خرید آن‌ها را درک کنید." },
+    { icon: "trending", title: "قیف خود را بهینه کنید", description: "معیارها را در هر مرحله پیگیری کنید تا شناسایی کنید کجا مشتریان بالقوه افت می‌کنند و تبدیل را بهبود بخشید." },
+    { icon: "lightbulb", title: "روابط بسازید", description: "بر حل مشکلات و افزودن ارزش تمرکز کنید، نه فقط بستن معاملات." },
   ],
   technology: [
-    { icon: "alert", title: "Prioritize Security", description: "Implement strong passwords, 2FA, and regular backups to protect your business data." },
-    { icon: "sparkles", title: "Choose Scalable Tools", description: "Select software that can grow with your business to avoid costly migrations later." },
-    { icon: "trending", title: "Stay Updated", description: "Keep systems and software current to maintain security and access new features." },
+    { icon: "alert", title: "امنیت را اولویت قرار دهید", description: "رمزهای عبور قوی، احراز هویت دو مرحله‌ای و پشتیبان‌گیری منظم را پیاده‌سازی کنید تا از داده‌های کسب‌وکار خود محافظت کنید." },
+    { icon: "sparkles", title: "ابزارهای مقیاس‌پذیر انتخاب کنید", description: "نرم‌افزاری را انتخاب کنید که می‌تواند با کسب‌وکار شما رشد کند تا از مهاجرت‌های پرهزینه بعداً جلوگیری کنید." },
+    { icon: "trending", title: "به‌روز بمانید", description: "سیستم‌ها و نرم‌افزار را به‌روز نگه دارید تا امنیت را حفظ کنید و به ویژگی‌های جدید دسترسی داشته باشید." },
   ],
   legal: [
-    { icon: "alert", title: "Get Professional Help", description: "Consult with a lawyer to ensure you're properly structured and compliant with regulations." },
-    { icon: "sparkles", title: "Protect Your IP", description: "Trademark your brand name and logo early to prevent others from using them." },
-    { icon: "lightbulb", title: "Use Written Agreements", description: "Always get contracts in writing to avoid misunderstandings and disputes." },
+    { icon: "alert", title: "کمک حرفه‌ای بگیرید", description: "با یک وکیل مشورت کنید تا مطمئن شوید به درستی ساختار یافته و با مقررات مطابقت دارید." },
+    { icon: "sparkles", title: "از مالکیت معنوی خود محافظت کنید", description: "نام و لوگوی برند خود را زود ثبت کنید تا از استفاده دیگران از آن‌ها جلوگیری کنید." },
+    { icon: "lightbulb", title: "از توافقات کتبی استفاده کنید", description: "همیشه قراردادها را کتبی دریافت کنید تا از سوءتفاهم‌ها و اختلافات جلوگیری کنید." },
   ],
 };
 
@@ -128,6 +128,18 @@ export default function Home() {
       "finance", "product", "sales", "technology", "legal"
     ];
     
+    const labels: Record<SectionType, string> = {
+      strategy: "استراتژی",
+      operations: "عملیات",
+      hr: "منابع انسانی",
+      branding: "برندینگ",
+      finance: "مالی",
+      product: "محصول",
+      sales: "فروش",
+      technology: "فناوری",
+      legal: "حقوقی"
+    };
+    
     return sectionTypes.map(type => {
       const subsections = subsectionsState[type];
       const totalProgress = subsections.reduce((sum, sub) => sum + sub.progress, 0);
@@ -135,7 +147,7 @@ export default function Home() {
       
       return {
         id: type,
-        label: type.charAt(0).toUpperCase() + type.slice(1),
+        label: labels[type],
         progress: avgProgress,
       };
     });
@@ -173,6 +185,18 @@ export default function Home() {
 
   const currentSubsections = selectedSection ? subsectionsState[selectedSection] : [];
   const currentTips = selectedSection ? AI_TIPS[selectedSection] : [];
+  
+  const sectionLabels: Record<SectionType, string> = {
+    strategy: "استراتژی",
+    operations: "عملیات",
+    hr: "منابع انسانی",
+    branding: "برندینگ",
+    finance: "مالی",
+    product: "محصول",
+    sales: "فروش",
+    technology: "فناوری",
+    legal: "حقوقی"
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -185,19 +209,19 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                  Business Growth Blueprint
+                  طرح جامع رشد کسب‌وکار
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Build and visualize your complete business plan
+                  برنامه کسب‌وکار کامل خود را بسازید و تجسم کنید
                 </p>
               </div>
             </div>
-            <div className="text-right">
+            <div className="text-left">
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
-                Overall Progress
+                پیشرفت کلی
               </div>
               <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                {overallProgress}%
+                ٪{overallProgress}
               </div>
             </div>
           </div>
@@ -209,9 +233,9 @@ export default function Home() {
           <div className="lg:col-span-7 xl:col-span-8">
             <div className="bg-background/60 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-border/50">
               <div className="mb-6 text-center">
-                <h2 className="text-xl font-semibold mb-2">Your Business Ecosystem</h2>
+                <h2 className="text-xl font-semibold mb-2">اکوسیستم کسب‌وکار شما</h2>
                 <p className="text-sm text-muted-foreground">
-                  Click any section to start building your blueprint
+                  برای شروع ساخت طرح خود، هر بخشی را کلیک کنید
                 </p>
               </div>
               <div className="w-full min-h-[600px] flex items-center justify-center">
@@ -235,7 +259,7 @@ export default function Home() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         sectionId={selectedSection}
-        sectionLabel={selectedSection ? selectedSection.charAt(0).toUpperCase() + selectedSection.slice(1) : ""}
+        sectionLabel={selectedSection ? sectionLabels[selectedSection] : ""}
         subsections={currentSubsections}
         onSubsectionUpdate={handleSubsectionUpdate}
       />

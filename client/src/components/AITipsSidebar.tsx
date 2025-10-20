@@ -30,8 +30,8 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold">AI Insights</h2>
-            <p className="text-xs text-muted-foreground">Personalized recommendations</p>
+            <h2 className="text-lg font-semibold">بینش‌های هوشمند</h2>
+            <p className="text-xs text-muted-foreground">پیشنهادات شخصی‌سازی شده</p>
           </div>
         </div>
 
@@ -85,7 +85,7 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
                 <Lightbulb className="w-10 h-10 text-muted-foreground/50" />
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
-                Select a section from the diagram to see AI-powered insights and recommendations
+                برای مشاهده بینش‌ها و پیشنهادات هوش مصنوعی، یک بخش از نمودار را انتخاب کنید
               </p>
             </motion.div>
           )}

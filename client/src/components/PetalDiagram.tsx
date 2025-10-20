@@ -80,7 +80,7 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
       viewBox="0 0 500 500" 
       className="w-full h-full drop-shadow-lg"
       role="img" 
-      aria-label="Business ecosystem diagram"
+      aria-label="نمودار اکوسیستم کسب‌وکار"
     >
       <defs>
         <filter id="soft-glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -222,7 +222,7 @@ export default function PetalDiagram({ sections, onSectionClick }: PetalDiagramP
         pointerEvents="none"
         style={{ userSelect: "none" }}
       >
-        Business
+        کسب‌وکار
       </text>
     </svg>
   );

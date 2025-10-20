@@ -56,18 +56,18 @@ export default function SectionDetailModal({
           />
           
           <motion.div
-            initial={{ x: "100%" }}
+            initial={{ x: "-100%" }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
+            exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed right-0 top-0 h-full w-full max-w-3xl bg-background shadow-2xl z-50 overflow-hidden flex flex-col"
+            className="fixed left-0 top-0 h-full w-full max-w-3xl bg-background shadow-2xl z-50 overflow-hidden flex flex-col"
             data-testid="section-detail-modal"
           >
             <div className={`${colorClass} px-6 py-4 flex items-center justify-between`}>
               <div className="flex-1 min-w-0">
                 <h2 className="text-2xl font-bold truncate">{sectionLabel}</h2>
                 <p className="text-sm opacity-90 mt-1">
-                  {completedCount} of {totalCount} completed • {overallProgress}% overall
+                  {completedCount} از {totalCount} تکمیل شده • ٪{overallProgress} کل
                 </p>
               </div>
               
@@ -103,10 +103,10 @@ export default function SectionDetailModal({
 
             <div className="border-t px-6 py-4 flex items-center justify-between bg-card">
               <p className="text-sm text-muted-foreground">
-                Changes are saved automatically
+                تغییرات به صورت خودکار ذخیره می‌شوند
               </p>
               <Button onClick={onClose} data-testid="button-done">
-                Done
+                تمام
               </Button>
             </div>
           </motion.div>
