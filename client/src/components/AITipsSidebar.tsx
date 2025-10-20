@@ -23,11 +23,16 @@ const ICON_MAP = {
 
 export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarProps) {
   return (
-    <Card className="p-6 h-full overflow-y-auto" data-testid="ai-tips-sidebar">
+    <Card className="p-6 h-full overflow-y-auto shadow-lg bg-background/60 backdrop-blur-sm border-border/50" data-testid="ai-tips-sidebar">
       <div className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-primary" />
-          <h2 className="text-lg font-semibold">AI Insights</h2>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold">AI Insights</h2>
+            <p className="text-xs text-muted-foreground">Personalized recommendations</p>
+          </div>
         </div>
 
         <AnimatePresence mode="wait">
@@ -38,7 +43,7 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="space-y-4"
+              className="space-y-3"
             >
               {tips.map((tip, index) => {
                 const Icon = ICON_MAP[tip.icon];
@@ -49,15 +54,15 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="p-4 hover-elevate">
+                    <Card className="p-4 hover-elevate border-border/50 bg-background/40">
                       <div className="flex gap-3">
                         <div className="flex-shrink-0">
-                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center">
                             <Icon className="w-4 h-4 text-primary" />
                           </div>
                         </div>
-                        <div className="space-y-1">
-                          <h3 className="text-sm font-semibold">{tip.title}</h3>
+                        <div className="space-y-1.5">
+                          <h3 className="text-sm font-semibold leading-tight">{tip.title}</h3>
                           <p className="text-xs text-muted-foreground leading-relaxed">
                             {tip.description}
                           </p>
@@ -74,13 +79,13 @@ export default function AITipsSidebar({ selectedSection, tips }: AITipsSidebarPr
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-center py-12"
+              className="text-center py-16"
             >
-              <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
-                <Lightbulb className="w-8 h-8 text-muted-foreground" />
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-muted/50 to-muted/20 mx-auto mb-4 flex items-center justify-center">
+                <Lightbulb className="w-10 h-10 text-muted-foreground/50" />
               </div>
-              <p className="text-sm text-muted-foreground">
-                Select a section to see AI-powered insights and recommendations
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                Select a section from the diagram to see AI-powered insights and recommendations
               </p>
             </motion.div>
           )}

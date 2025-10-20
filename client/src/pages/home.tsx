@@ -4,6 +4,7 @@ import SectionDetailModal from "@/components/SectionDetailModal";
 import BusinessHealthMeter from "@/components/BusinessHealthMeter";
 import AITipsSidebar from "@/components/AITipsSidebar";
 import type { SubsectionData } from "@/components/SubsectionCard";
+import { Sparkles } from "lucide-react";
 
 // todo: remove mock functionality
 const SUBSECTIONS_DATA: Record<SectionType, SubsectionData[]> = {
@@ -174,30 +175,49 @@ export default function Home() {
   const currentTips = selectedSection ? AI_TIPS[selectedSection] : [];
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b sticky top-0 bg-background/95 backdrop-blur-sm z-30">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      <header className="border-b bg-background/80 backdrop-blur-md sticky top-0 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold">Business Growth Blueprint</h1>
-              <p className="text-sm text-muted-foreground">
-                Build and visualize your complete business plan
-              </p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-md">
+                <Sparkles className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                  Business Growth Blueprint
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                  Build and visualize your complete business plan
+                </p>
+              </div>
             </div>
             <div className="text-right">
-              <div className="text-sm text-muted-foreground">Overall Progress</div>
-              <div className="text-2xl font-bold">{overallProgress}%</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">
+                Overall Progress
+              </div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                {overallProgress}%
+              </div>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-7 xl:col-span-8">
-            <div className="w-full min-h-[600px] flex items-center justify-center p-4">
-              <div className="w-full max-w-2xl aspect-square">
-                <PetalDiagram sections={sections} onSectionClick={handleSectionClick} />
+            <div className="bg-background/60 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-border/50">
+              <div className="mb-6 text-center">
+                <h2 className="text-xl font-semibold mb-2">Your Business Ecosystem</h2>
+                <p className="text-sm text-muted-foreground">
+                  Click any section to start building your blueprint
+                </p>
+              </div>
+              <div className="w-full min-h-[600px] flex items-center justify-center">
+                <div className="w-full max-w-2xl aspect-square">
+                  <PetalDiagram sections={sections} onSectionClick={handleSectionClick} />
+                </div>
               </div>
             </div>
           </div>
